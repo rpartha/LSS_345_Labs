@@ -336,8 +336,7 @@ w = pi * linspace(0, 0.4, 801);
 n = 1:199;
 M1 = 75;
 
-%hn1 = (cos(pi*(n-M1)/M1)).*((omB)*sinc(omB*(n-M1)/pi) -
- (omA)*sinc(omA*(n-M1)/pi))/pi;
+%hn1 = (cos(pi*(n-M1)/M1)).*((omB)*sinc(omB*(n-M1)/pi) - (omA)*sinc(omA*(n-M1)/pi))/pi;
 hn1 = ((omB)*sinc(omB*(n-M1)/pi) - (omA)*sinc(omA*(n-M1)/pi))/pi;
 hh1 = abs(freqz(hn1, 1, w));
 hhdB1 = mag2db(abs(hh1));
@@ -351,8 +350,7 @@ xlabel('\omega (\pi)'); grid on;
 title('Magnitude Response Gibbs |H(\omega)|, 2M = 150');
 
 M2 = 100;
-%hn2 = (cos(pi*(n-M2)/M2)).*((omB)*sinc(omB*(n-M2)/pi) -
- (omA)*sinc(omA*(n-M2)/pi))/pi;
+%hn2 = (cos(pi*(n-M2)/M2)).*((omB)*sinc(omB*(n-M2)/pi) - (omA)*sinc(omA*(n-M2)/pi))/pi;
 hn2 = ((omB)*sinc(omB*(n-M2)/pi) - (omA)*sinc(omA*(n-M2)/pi))/pi;
 hh2 = abs(freqz(hn2, 1, w));
 hhdB1 = mag2db(abs(hh2));
