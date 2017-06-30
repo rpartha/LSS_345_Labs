@@ -15,7 +15,7 @@ clear
 
 u = @(t) (t>=0);
 w0 = 4;
- 
+
 % part a
 t_int = linspace(0,10,1001);
  
@@ -25,17 +25,17 @@ H(s) = (s+3)/(s^2+s+1.25)
 h(t) = ilaplace(H)
 p = poles(H)
 t_const = double(log(100)/abs(real(p(1))))
- 
-figure; 
-plot(t_int,h(t_int),'b');  
-grid on; xlabel('t(sec)'); 
+
+figure;
+plot(t_int,h(t_int),'b');
+grid on; xlabel('t(sec)');
 title('impulse response, h(t)');
 set(gca, 'XTick', 0:1:10, 'XLim', [0 10]);
 set(gca, 'YTick', -2:1:2, 'YLim', [-2 2]);
 
 %part b
 eval = H(w0*1i)% H(jw)
-mag_of_H = abs(H(w0 * 1i)).^2 
+mag_of_H = abs(H(w0 * 1i)).^2
 phase = angle(eval)
 
 yst = abs(H(w0*1i))*sin(w0*t_int + phase);
@@ -49,7 +49,7 @@ res = a(2) * exp(b(2)*t_int) + a(3) * exp(b(3)*t_int);
 y_c = eval * exp(w0*1i*t_int) + res;
 y = imag(y_c);
 
-figure; 
+figure;
 plot(t_int, x(t_int), 'k--', t_int, y, 'b');
 grid on;
 hold on; plot(t_int, yst, 'r--');
@@ -131,7 +131,7 @@ clear;
 
 %part a
 w0 = 5; alpha = 0.5;
-w = 0:0.05:10 
+w = 0:0.05:10
 
 H_mag_sq = @(w)(alpha^2 * w.^2)./((w.^2-w0^2).^2 + alpha^2 .* w.^2);
 
@@ -179,7 +179,7 @@ clear;
 %alpha = 1
 %part a
 w0 = 5; alpha = 1;
-w = 0:0.05:10 
+w = 0:0.05:10
 
 H_mag_sq = @(w)(alpha^2 * w.^2)./((w.^2-w0^2).^2 + alpha^2 .* w.^2);
 
@@ -223,15 +223,15 @@ set(gca, 'XTick', 0:10:40, 'XLim', [0, 40]);
 set(gca, 'YTick', -4:1:4, 'YLim', [-4, 4]);
 
 %part e
-w0 = 5; alpha = 0.2; 
+w0 = 5; alpha = 0.2;
 Tmax = 40; T = Tmax/2000; t = 0:T:Tmax;
 wr = sqrt((w0^2) - ((alpha^2)/4));
 
 G = (alpha/wr) * exp(-alpha*(T/2)) * sin(wr*T);
 a1 = -2 * exp(-alpha*(T/2)) * cos(wr*T); a2 = exp(-alpha*T);
 Hd = @(z)(G.*z.^(-1) .* (1-z.^(-1)))./(1 + (a1.*z.^(-1)) + (a2.*z.^(-2)));
-Hd(t); 
-xn = x; 
+Hd(t);
+xn = x;
 
 ctr = 0; v1 = 0; v2 = 0; yn = 0;
 while (ctr < t)
@@ -241,12 +241,12 @@ while (ctr < t)
     ctr = ctr + 1;
 end
 disp(['yn = ' num2str(yn)]);
-   
+
 num = [0 G -G]; den = [1 a1 a2];
 y_lsim = filter(num, den, x)
 y_iter = yn;
-E_lsim = norm(y_lsim - y_iter) 
-E_iter = norm(y_iter - y_lsim) 
+E_lsim = norm(y_lsim - y_iter)
+E_iter = norm(y_iter - y_lsim)
 
 %part f
 w0=5; alpha = 0.2; T = 0.02;
@@ -262,7 +262,7 @@ op3 = 2 * 1i * sin(wr * T); A = (op1 * op2)/op3;
 NRR_exact = (2 * real((A.^2 * p.^2)./(1-(p.^2)))) + ...
             ((2 .* (abs(A).^2) * abs(p).^2)./(1-(abs(p).^2)))
 
-ctr = 0; ans=0; 
+ctr = 0; ans=0;
 while (ctr < N-1)
     ans = (abs(hd(ctr)).^2) + ans;
     ctr = ctr + 1;

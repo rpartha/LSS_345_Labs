@@ -6,7 +6,7 @@
 %linearity and time invariance. Further more, convolution was approximated
 %numerically via the help of the conv method as used below.
 
-%Problem 2 serves to exhbit transient and steady state (ss) responses of 
+%Problem 2 serves to exhbit transient and steady state (ss) responses of
 %linear systems.
 
 %%
@@ -215,14 +215,14 @@ y = x - T * con(1:length(t));
 H = @(s) (s.^2 + w0^2)./(s.^2 + alpha*s + w0^2);
 val = abs(H(1i * w1));
 
-figure; 
+figure;
 plot(t, x, 'b');
 set(gca, 'Ytick', (-2:1:2), 'YLim', [-2 2]);
 set(gca, 'XTick', (0:10:100), 'XLim', [0 100]);
 title('input signal, x(t)'); grid on
 xlabel('t');
 
-figure; 
+figure;
 t1 = 0:T:30; t2 = 70:T:100;
 y1 = val * ones(1, length(t1));
 y2 = val * ones(1, length(t2));
@@ -271,7 +271,7 @@ mag_of_H = abs(H(w_int * 1i)).^2; % H(jw)
 three_dB_frequency = w_minus:0.01:w_plus;
 mag_half_order = 0.5 * ones(1, length(three_dB_frequency));
 
-figure; 
+figure;
 plot(w_int, mag_of_H, three_dB_frequency, ...
      mag_half_order, w1, mag_of_H(find(w_int == w1)), ...
      'r.', 'MarkerSize', 20);
@@ -305,14 +305,14 @@ y = x - T * con(1:length(t));
 H = @(s) (s.^2 + w0^2)./(s.^2 + alpha*s + w0^2);
 val = abs(H(1i * w1));
 
-figure; 
+figure;
 plot(t, x, 'b');
 set(gca, 'Ytick', (-2:1:2), 'YLim', [-2 2]);
 set(gca, 'XTick', (0:10:100), 'XLim', [0 100]);
 title('input signal, x(t)'); grid on
 xlabel('t');
 
-figure; 
+figure;
 t1 = 0:T:30; t2 = 70:T:100;
 y1 = val * ones(1, length(t1));
 y2 = val * ones(1, length(t2));
@@ -361,7 +361,7 @@ mag_of_H = abs(H(w_int * 1i)).^2; % H(jw)
 three_dB_frequency = w_minus:0.01:w_plus;
 mag_half_order = 0.5 * ones(1, length(three_dB_frequency));
 
-figure; 
+figure;
 plot(w_int, mag_of_H, three_dB_frequency, ...
      mag_half_order, w1, mag_of_H(find(w_int == w1)), ...
      'r.', 'MarkerSize', 20);
@@ -381,7 +381,7 @@ Y = load('lab2.dat');
 
 %part a
 f0 = 60; width_3dB = 1.5;
-w0 = 2 * pi * f0; 
+w0 = 2 * pi * f0;
 alpha = 2 * pi * width_3dB;
 
 one = w0^2 + (alpha^2)/2;
